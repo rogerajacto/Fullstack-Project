@@ -22,7 +22,7 @@ async function getAccessoriesByID(req, res) {
     const id = req.params.id;
 
     try {
-        const accessories = await accessoriesDB.getAccessories(id);
+        const accessories = await accessoriesDB.getAccessoriesByID(id);
 
         if (accessories) {
             res.json(accessories);
