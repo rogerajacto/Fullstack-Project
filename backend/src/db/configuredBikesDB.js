@@ -34,10 +34,10 @@ async function getConfiguredBikesByID(id) {
 
 
 
-async function addConfiguredBike(frame, color, seat, lights, mudguard, range, motor) {
+async function addConfiguredBike(frame, color, motor, seat, lights, mudguard) {
 
-    const sql = "INSERT INTO configured_bikes (frame, color, seat, lights, mudguard, `range` ,motor) VALUES (?,?,?,?,?,?,?)";
-    const params = [frame, color, seat, lights, mudguard, range, motor]
+    const sql = "INSERT INTO configured_bikes (frame, color, motor, seat, lights, mudguard) VALUES (?,?,?,?,?,?)";
+    const params = [frame, color, motor, seat, lights, mudguard]
 
     try {
         const [result] = await connection.promise().query(sql, params);
@@ -51,10 +51,10 @@ async function addConfiguredBike(frame, color, seat, lights, mudguard, range, mo
     }
 }
 
-async function editConfiguredBike(frame, color, seat, lights, mudguard, range, motor,id) {
+async function editConfiguredBike(frame, color, seat, lights, mudguard, motor,id) {
 
-    const sql = "UPDATE configured_bikes  SET frame = ?, color = ?, seat = ?, lights = ?, mudguard = ?, `range` = ? ,motor = ? WHERE id = ?";
-    const params = [frame, color, seat, lights, mudguard, range, motor, id]
+    const sql = "UPDATE configured_bikes  SET frame = ?, color = ?, seat = ?, lights = ?, mudguard = ?, motor = ? WHERE id = ?";
+    const params = [frame, color, seat, lights, mudguard, motor, id]
 
     try {
         const [result] = await connection.promise().query(sql, params);

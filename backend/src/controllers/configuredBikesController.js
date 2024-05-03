@@ -38,10 +38,11 @@ async function getConfiguredBikesByID(req, res) {
 
 async function addConfiguredBike(req, res) {
 
-    const {frame, color, seat, lights, mudguard, range, motor} = req.body;
+    const {frame, color, motor, seat, lights, mudguard} = req.body;
+
 
     try {
-        const result = await configuredBikesDB.addConfiguredBike(frame, color, seat, lights, mudguard, range, motor);
+        const result = await configuredBikesDB.addConfiguredBike(frame, color, motor, seat, lights, mudguard);
         const bikes = await configuredBikesDB.getConfiguredBikesByID(result.insertId);
 
         if (bikes) {
@@ -58,11 +59,11 @@ async function addConfiguredBike(req, res) {
 
 async function editConfiguredBike(req, res) {
 
-    const {frame, color, seat, lights, mudguard, range, motor} = req.body;
+    const {frame, color, seat, lights, mudguard, motor} = req.body;
     const id = req.params.id;
 
     try {
-        const bikes = await configuredBikesDB.editConfiguredBike(frame, color, seat, lights, mudguard, range, motor, id);
+        const bikes = await configuredBikesDB.editConfiguredBike(frame, color, seat, lights, mudguard, motor, id);
 
         if (bikes) {
             res.json(bikes);

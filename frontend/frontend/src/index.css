@@ -1,0 +1,173 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display+SC&family=Rubik:ital,wght@0,400;0,700;1,400;1,700&family=Yellowtail&display=swap');
+
+
+@import url('https://fonts.googleapis.com/css2?family=Heebo&family=Playfair+Display+SC&family=Rubik:ital,wght@0,400;0,700;1,400;1,700&family=Yellowtail&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Heebo&family=Pacifico&family=Playfair+Display+SC&family=Rubik:ital,wght@0,400;0,700;1,400;1,700&family=Yellowtail&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&family=Heebo&family=Homemade+Apple&family=Pacifico&family=Playfair+Display+SC&family=Rubik:ital,wght@0,400;0,700;1,400;1,700&family=Satisfy&family=Yellowtail&family=Yomogi&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+
+*{
+  box-sizing: border-box;
+}
+
+body{
+  margin: 0;
+}
+
+
+.navegation-menu{
+  background: linear-gradient(to right,rgb(226, 223, 52),rgb(214, 175, 3));
+    /* background-color: rgb(252, 142, 64); */
+}
+
+
+
+.navegation-items-list{
+
+padding: 0.5%;
+list-style-type: none;
+display: flex;
+justify-content: end;
+align-items: center;
+gap: 10px;
+margin: 0;
+
+}
+
+
+.navegation-items-responsive{
+  display: none;
+}
+
+#name{
+  margin-right: auto;
+  font-family: 'Playfair Display SC', serif;
+  text-shadow: 3px 3px #444;
+  /* font-family: 'Pacifico', cursive; */
+  font-weight: 700;
+  font-size: 2.0rem;
+  color: #FFF;
+
+  
+}
+
+.logo{
+  width: 50px;
+
+}
+
+i{
+  padding: 5px;
+}
+
+.nav-item{
+  text-align: center;
+  font-family: 'Playfair Display SC', serif;
+  color: #fff;
+  transition: all 0.2s;
+}
+
+.nav-item:hover{
+  cursor: pointer;
+  color: #444;
+  transition: all 0.2s;
+}
+
+li > div{
+  text-align: center;
+  padding: 0 20px;
+}
+
+/* MAIN VIEW */
+
+a{
+  text-decoration: none;
+}
+
+.stock-models {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 150px;
+
+}
+
+.model-specs img{
+  width: 250px;
+  transition: ease-in-out 0.3s all;
+}
+
+.stock-models img:hover{
+  width: 300px ;
+  transition: ease-in-out 0.3s all;
+}
+
+hr{
+  margin-top: 5%;
+  background-color: #444;
+  height: 4px;
+  border-radius: 5px;
+  width: 75%;
+  margin-bottom: 50px;
+}
+
+.customization .fa-screwdriver-wrench{
+  color: #444;
+  font-size: 6rem;
+  text-align: center;
+}
+
+.customization h2, p{
+  text-align: center;
+}
+
+.customization{
+  margin-bottom: 50px;
+}
+
+
+/* SPECIFIC MODEL VIEW */
+
+.specific-model-specs > label, h1, h2, h3{
+  font-family: 'Playfair Display SC', serif;
+  color: #444;
+}
+
+h1{
+font-size: 3rem;
+text-align: center;
+text-decoration: none;
+}
+
+.specifics-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: 150px;
+}
+
+.specifics-container img{
+  width: 500px;
+}
+
+.specifics-container h2{
+  text-align: center;
+  font-size: 2.6rem;
+}
+
+
+/* CONFIGURATOR */
+
+
+.configurator-form{
+margin: 20px 30px;
+}

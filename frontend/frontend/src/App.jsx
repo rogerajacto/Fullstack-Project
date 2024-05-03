@@ -1,9 +1,15 @@
+
+import NavegationBar from "./components/NavigationBar";
+import MainView from "./views/MainView";
+import SpecificModel from "./views/SpecificModel";
+import Customize from "./views/CustomizeView";
+
+import { Route, Switch } from "wouter";
 import { useState } from "react";
 import { useEffect } from "react";
 
 
 function App() {
-
 
   const [data, setdata ] = useState([]);
 
@@ -17,22 +23,42 @@ function App() {
     setdata(result);
   }
 
-  console.log(data)
+  // console.log(data)
 
   useEffect(function () {
     getData()
 },[])
 
+function getImg() {
+  if (data[0]?.image_url != undefined) {
+    return (<SpecificModel stockData = {data}/>)
+  }
+}
+
+
   return (<>
+   <NavegationBar/>
+    <Switch>
+      
+        <Route path = "/">
 
-      <div>
-         <h1>{data[0]?.model}</h1>
-         <img src={data[0]?.image_url} alt="image of e_bike" />
-      </div>
+          <MainView data = {data}/>
 
-    <h1>{data[4]?.model}</h1>
+        </Route>
 
-    <h1>{data[8]?.model}</h1>
+        <Route path = "/specificModel/:model">
+
+          {getImg()}
+
+        </Route>
+
+        <Route path = "/customize">
+
+          <Customize/>
+
+        </Route>
+    </Switch>
+        
 
   </>)
 }
