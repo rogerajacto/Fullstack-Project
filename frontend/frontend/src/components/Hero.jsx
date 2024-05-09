@@ -12,7 +12,7 @@ function MainPage () {
       setdata(result);
     }
   
-    console.log(data)
+    // console.log(data)
   
     useEffect(function () {
       getData()

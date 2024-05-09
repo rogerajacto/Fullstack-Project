@@ -95,7 +95,7 @@ a{
   justify-content: center;
   flex-wrap: wrap;
   align-items: center;
-  gap: 150px;
+  gap: 50px 150px;
 
 }
 
@@ -167,7 +167,66 @@ text-decoration: none;
 
 /* CONFIGURATOR */
 
+.configurator-wrapper{
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  
+}
 
 .configurator-form{
-margin: 20px 30px;
+text-align: center;
+border: 3px solid rgb(138, 112, 0);
+border-radius: 15px;
+padding: 0 20px 0 20px;
+}
+
+
+
+/* Login/ REGISTER FORMS */
+
+.loggIn-form{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+
+}
+
+.loggIn-form label {
+  font-size: 1.5rem;
+  text-align: center;
+  font-family: 'Playfair Display SC', serif;
+  color: #444;
+}
+
+.form-box{
+  width: 20%;
+  margin: 0 auto;
+}
+
+
+.submit-button{
+  display: block;
+  margin: 50px auto;
+  border-radius: 15px;
+  width: fit-content;
+  height: 30px;
+  font-family:'Playfair Display SC', serif;
+  color: #444;
+  font-weight: 700;
+  letter-spacing: 3px;
+  transition: all 0.3s;
+}
+.submit-button:hover{
+  cursor: pointer;
+  background: linear-gradient( to right,rgb(226, 223, 52),rgb(138, 112, 0));
+  font-family:'Playfair Display SC', serif;
+  color: #FFF;
+  transition: 0.3s;
+
+}
+
+.to-register{
+  text-align: center;
 }

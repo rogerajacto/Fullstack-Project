@@ -3,6 +3,8 @@ import NavegationBar from "./components/NavigationBar";
 import MainView from "./views/MainView";
 import SpecificModel from "./views/SpecificModel";
 import Customize from "./views/CustomizeView";
+import Register from "./views/RegisterView";
+import LoggingIn from "./views/LoggingView";
 
 import { Route, Switch } from "wouter";
 import { useState } from "react";
@@ -55,6 +57,17 @@ function getImg() {
         <Route path = "/customize">
 
           <Customize/>
+
+        </Route>
+
+        <Route path="/register">
+          <Register/>
+          
+        </Route>
+
+        <Route path="/login">
+
+        <LoggingIn></LoggingIn>   
 
         </Route>
     </Switch>

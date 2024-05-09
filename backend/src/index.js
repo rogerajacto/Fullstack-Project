@@ -5,6 +5,7 @@ const express = require ('express');
 const stockBikesRouter = require ("./routes/stockBikesRoute");
 const configuredBikesRouter = require ("./routes/configuredBikesRoute");
 const accessoriesRouter =  require ("./routes/accessoriesRouter");
+const usersRouter =  require ("./routes/usersRoute");
 
 const cors = require("cors");
 
@@ -16,6 +17,7 @@ app.use(express.json());
 app.use("/stockBikes", stockBikesRouter);
 app.use("/configuredBikes", configuredBikesRouter);
 app.use("/accessories", accessoriesRouter);
+app.use("/users", usersRouter)
 
 app.listen(port, function() {
     console.log(`Listening on port ${port}`);

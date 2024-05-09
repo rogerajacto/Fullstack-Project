@@ -30,6 +30,30 @@ function MainView ({data}) {
                 <img src={data[8]?.image_url} alt="image of e_bike" />
             </div>
         </Link>
+
+        <Link href = {"/specificModel/" + data[14]?.model}>
+            <div className="model-specs">
+                <h2>{data[14]?.model}</h2>
+                <img src={data[14]?.image_url} alt="image of e_bike" />
+            </div>
+        </Link>
+
+        <Link href = {"/specificModel/" + data[10]?.model}>
+            <div className="model-specs">
+                <h2>{data[10]?.model}</h2>
+                <img src={data[10]?.image_url} alt="image of e_bike" />
+            </div>
+        </Link>
+
+        <Link href = {"/specificModel/" + data[18]?.model}>
+            <div className="model-specs">
+                <h2>{data[18]?.model}</h2>
+                <img src={data[18]?.image_url} alt="image of e_bike" />
+            </div>
+        </Link>
+
+
+
         </div>
         <hr/>
 
