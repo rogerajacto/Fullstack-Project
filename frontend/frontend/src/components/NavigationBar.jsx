@@ -32,7 +32,7 @@ function NavegationBar() {
                 </Link>
 
   
-                <Link href="/">
+                <Link href="/cart">
                     
                     <li className="nav-item">
                     <div><i class="fa-solid fa-cart-shopping"></i></div> 

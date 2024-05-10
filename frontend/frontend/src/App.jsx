@@ -5,6 +5,7 @@ import SpecificModel from "./views/SpecificModel";
 import Customize from "./views/CustomizeView";
 import Register from "./views/RegisterView";
 import LoggingIn from "./views/LoggingView";
+import ShoppingCart from "./views/ShoppingCartView";
 
 import { Route, Switch } from "wouter";
 import { useState } from "react";
@@ -68,6 +69,12 @@ function getImg() {
         <Route path="/login">
 
         <LoggingIn></LoggingIn>   
+
+        </Route>
+
+        <Route path="/cart">
+
+          <ShoppingCart/>
 
         </Route>
     </Switch>

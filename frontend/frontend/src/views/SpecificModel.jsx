@@ -1,6 +1,4 @@
 import { useState, useEffect } from "react";
-import { Route } from "wouter";
-
 function SpecificModel({stockData}) {
 
 
@@ -38,6 +36,86 @@ function SpecificModel({stockData}) {
         },
     [])
 
+
+
+    async function HandleSubmit(event) {
+
+        event.preventDefault();
+ 
+        alert("Item Added to Cart!");
+ 
+        const body = {
+         product: "V_Series_Moped",
+         price: "2490"
+       };
+   
+       const options = {
+         method: "POST",
+         body: JSON.stringify(body),
+         headers: {
+           "Content-type": "application/json; charset=UTF-8",
+         },
+       };
+   
+       const url = "http://localhost:3000/cart";
+       const response = await fetch(url, options);
+       const result = await response.json();
+   
+       console.log(result)
+       return result;
+ 
+      
+ 
+     }
+
+     function handleSelect2(event) {
+        
+        setValue2 (event.target.value)
+    }
+
+    useEffect(
+        function () {
+            if(stockData[0]?.image_url != undefined){
+                setValue
+            }
+        },
+    [])
+
+
+
+    async function HandleSubmit2(event) {
+
+        event.preventDefault();
+ 
+        alert("Item Added to Cart!");
+ 
+        const body = {
+         product: "V_Series_Moped_X",
+         price: "2940"
+       };
+   
+       const options = {
+         method: "POST",
+         body: JSON.stringify(body),
+         headers: {
+           "Content-type": "application/json; charset=UTF-8",
+         },
+       };
+   
+       const url = "http://localhost:3000/cart";
+       const response = await fetch(url, options);
+       const result = await response.json();
+   
+       console.log(result)
+       return result;
+ 
+      
+ 
+     }
+
+
+
+
     return (<>
         <h1>{stockData[0]?.model}</h1>
 
@@ -45,9 +123,11 @@ function SpecificModel({stockData}) {
 
             <div className="specific-model-specs">
 
-                <h2>{stockData[0]?.model}</h2>
+                
 
-                <form action="" method="post">
+                <form onSubmit={HandleSubmit}>
+
+                    <h2>{stockData[0]?.model}</h2>
 
                     <img src={value} alt="image of e-bike" />
                     <br />
@@ -66,7 +146,7 @@ function SpecificModel({stockData}) {
                     <h3>Price: {stockData[0]?.price} €</h3>
 
                 
-                    <button> Add to Cart</button>
+                    <input type="submit" className = "submit-button" value="Add To cart" /> 
                 </form>
 
 
@@ -76,7 +156,7 @@ function SpecificModel({stockData}) {
                 
                 <h2>{stockData[2]?.model}</h2>
 
-                <form action="" method="post">
+                <form onSubmit={HandleSubmit2}>
                     
                     <img src={value2} alt="image of e-bike" />
                     <br />
@@ -94,8 +174,8 @@ function SpecificModel({stockData}) {
 
                     <h3>Price: {stockData[2]?.price} €</h3>
 
-                
-                    <button> Add to Cart</button>
+                                
+                    <input type="submit" className = "submit-button" value="Add To cart" /> 
                 </form>
 
             </div>
