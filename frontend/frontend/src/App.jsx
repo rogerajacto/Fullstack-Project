@@ -1,11 +1,12 @@
 
 import NavegationBar from "./components/NavigationBar";
 import MainView from "./views/MainView";
-import SpecificModel from "./views/SpecificModel";
+import Rseries from "./views/Rseries";
 import Customize from "./views/CustomizeView";
 import Register from "./views/RegisterView";
 import LoggingIn from "./views/LoggingView";
 import ShoppingCart from "./views/ShoppingCartView";
+import Vseries from "./views/VseriesView";
 
 import { Route, Switch } from "wouter";
 import { useState } from "react";
@@ -32,9 +33,24 @@ function App() {
     getData()
 },[])
 
-function getImg() {
+
+function getImgsRseries(params) {
   if (data[0]?.image_url != undefined) {
-    return (<SpecificModel stockData = {data}/>)
+    return(
+      <>
+        <Rseries allStock = {data}/>
+      </>
+    )
+  }
+}
+
+function getImgsVseries(params) {
+  if (data[0]?.image_url != undefined) {
+    return(
+      <>
+        <Vseries allStock = {data}/>
+      </>
+    )
   }
 }
 
@@ -48,12 +64,15 @@ function getImg() {
           <MainView data = {data}/>
 
         </Route>
-
-        <Route path = "/specificModel/:model">
-
-          {getImg()}
-
+        <Route path="/rseries">
+          {getImgsRseries()}
         </Route>
+
+        
+        <Route path="/vseries">
+          {getImgsVseries}
+        </Route>
+
 
         <Route path = "/customize">
 

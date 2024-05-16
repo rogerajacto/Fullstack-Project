@@ -18,6 +18,24 @@ async function getStockBikes() {
     }
 }
 
+async function getStockBikesByModel(model) {
+
+    const sql = 'SELECT * FROM stock_bikes WHERE model LIKE ?'
+   
+
+
+    try {
+        const [result] = await connection.promise().query(sql, ["%"+model+"%"]);
+
+        return result;
+        
+    } catch (error) {
+        console.log(error);
+
+        throw new Error ("Database failure")
+    }
+}
+
 
 async function getStockBikeByID(id) {
 
@@ -39,5 +57,6 @@ async function getStockBikeByID(id) {
 
 module.exports = {
     getStockBikes,
-    getStockBikeByID
+    getStockBikeByID,
+    getStockBikesByModel
 }

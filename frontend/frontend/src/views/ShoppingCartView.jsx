@@ -1,26 +1,14 @@
 import { useState } from "react";
 import { useEffect } from "react";
+import CartService from "../services/CartService";
 
 function ShoppingCart() {
 
-const [items, setItems ] = useState([]);
 
-  async function getItems() {
-
-    const url = "http://localhost:3000/cart";
+    const cartInfo = CartService.getCart()
+    console.log(cartInfo)
 
 
-    const response = await fetch (url);
-    const result = await response.json();
-
-    setItems(result);
-  }
-
-  console.log(items)
-
-  useEffect(function () {
-    getItems()
-},[])
 
     return(
         <>
@@ -30,17 +18,24 @@ const [items, setItems ] = useState([]);
             <table>
                 <thead>
                     <th>Product</th>
+                    <th>Color</th>
+                    <th>Motor</th>
+                    <th>Range</th>
                     <th>Price</th>
                         </thead>
                             <tbody>
                             {
-                                items.map(function (info) {
+                                cartInfo.map(function (info) {
                                     return(
                                         <>
 
                                                 <tr>
-                                                    <td>{info.product}</td>
+                                                    <td>{info.model} </td>
+                                                    <td>{info.color}</td>
+                                                    <td>{info.motor} Watts</td>
+                                                    <td>{info.range} Km</td>
                                                     <td>{info.price} €</td>
+                                                    <td className="del-td"><button className="del-button"><i class="fa-solid fa-trash-can"></i></button></td>
                                                 </tr>
                                         </>
                                     )
@@ -48,6 +43,7 @@ const [items, setItems ] = useState([]);
                             }
                             </tbody>
             </table>
+
 
         </div>
         </>

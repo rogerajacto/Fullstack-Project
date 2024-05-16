@@ -1,6 +1,7 @@
 const usersDB = require("../db/usersDB");
 const hashedPassword = require ("../services/encryptionService");
-const validator = require ('validator')
+const validator = require ('validator');
+const jwtService = require ("../services/jwtService")
 
 async function addUser(req, res) {
     try {
@@ -40,18 +41,13 @@ async function addUser(req, res) {
                 return;
             }
         
-                res.json({
-                    email,
-                    userId
-                })
-                
             res.status(400).json({
+                email,
+                userId,
                 message: "New Account Created!"
             })
         }
 
-
-        
 
     } catch (error) {
         
@@ -68,17 +64,19 @@ async function loginUser(req, res) {
     const user = await usersDB.selectUser(email);
 
     
-    // console.log(user);
+    console.log(user);
     // console.log(email)
 
-    if (user == undefined) {
+    if (!user) {
         res.status(400).json({
+            status: "error",
             message: "User not found"
         })
         return;
     }
 
     const result = await hashedPassword.verifyHash(user.hashed_password, password);
+
     if (result !== true) {
         res.status(400).json({
             status: "Fail",
@@ -87,31 +85,13 @@ async function loginUser(req, res) {
         return;
     }
 
-    if (result == true) {
-        res.status(400).json({
-            status: "Success",
-            message: "User Logged In"
-        })
-        return;
-    }
-
-
-
-    const cookieData = {
-        userEmail: user.email
-    }
-    const jsonCookieData = JSON.stringify(cookieData);
-
-    res.cookie("LoggedIn", jsonCookieData, {
-        httpOnly: true,
-        sameSite: "none",
-        secure: true
-      });
-
-    res.json({
-        status: "success",
-        message: "user Logged In"
-    });
+	const token = jwtService.createToken(user.id,user.email );
+    console.log(token)
+	res.json({
+		status: 'Ok',
+		message: 'User logged in succefully',
+		token,
+	});
 
 }
 

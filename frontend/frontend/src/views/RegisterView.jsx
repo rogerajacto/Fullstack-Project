@@ -10,6 +10,10 @@ function Register() {
     async function HandleSubmit(event) {
         event.preventDefault();
 
+        const toHome = () => {
+          window.location.href = "/";
+      };
+
         const body = {
             email: email,
             password:password
@@ -23,14 +27,30 @@ function Register() {
             },
           };
 
-
-
+          try {
+            
             const url = "http://localhost:3000/users/register";
             const response = await fetch(url, options);
             const result = await response.json();
+
+            if (result.message == "New Account Created!") {
+
+              console.log(result);
+
+              alert (result.message);
+              toHome();
+            }
+
+            else{
+              console.log(result)
+              alert (result.message)
+            }
+
+          } catch (error) {
+            console.log(error)
+          }
         
-            console.log(result)
-            alert (result.message)
+
 
             return result    
 

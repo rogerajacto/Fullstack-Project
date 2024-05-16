@@ -12,7 +12,7 @@ function NavegationBar() {
            
 
             <ul className="navegation-items-list">
-            <Link href="/"><li>  <img src="https://50rebels.com/cdn/shop/files/50rebels-r-series-naked-mattblack2_1800x1800.jpg?v=1711980030" alt="logo" className="logo"></img></li></Link>
+            <Link href="/"><li>  <img src="https://50rebels.com/cdn/shop/products/frontfender.jpg?v=1672758133&width=1080" alt="logo" className="logo"></img></li></Link>
 
                 <li id ="name">25 Good Guys</li>
 
@@ -37,6 +37,14 @@ function NavegationBar() {
                     <li className="nav-item">
                     <div><i class="fa-solid fa-cart-shopping"></i></div> 
                     Shoppping Cart
+                </li>
+                </Link>
+  
+                <Link href="/login">
+                    
+                    <li className="nav-item">
+                    <div><i class="fa-regular fa-user"></i></div> 
+                    User
                 </li>
                 </Link>
             </ul>

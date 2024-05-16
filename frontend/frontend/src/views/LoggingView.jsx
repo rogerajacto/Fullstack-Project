@@ -1,38 +1,46 @@
 import { useState } from "react";
-import { Redirect } from "wouter";
 
 function LoggingIn() {
 
 const [email, setEmail] = useState("");
 const [password, setPassword] = useState("");
 
+const navigateToPage = () => {
+    window.location.href = '/';
+};
 async function HandleSubmit(event) {
-
     event.preventDefault();
 
     const body = {
         email: email,
-        password:password
-    }
+        password: password,
+    };
 
     const options = {
-        method: "POST",
+        method: 'POST',
         body: JSON.stringify(body),
         headers: {
-          "Content-type": "application/json; charset=UTF-8",
+            'Content-type': 'application/json; charset=UTF-8',
         },
-      };
+    };
 
+    try {
         const url = "http://localhost:3000/users/login";
         const response = await fetch(url, options);
         const result = await response.json();
-    
-        console.log(result)
 
-        alert(result.message);
+        localStorage.setItem('token', result.token);
 
-        return result
+        if (response.ok) {
+            alert('Login successful');
+        } else {
+            console.error('Login failed:', result.message);
+        }
+    } catch (error) {
+        console.error('Error:', error);
     }
+    navigateToPage();
+}
 
     return(
         <>

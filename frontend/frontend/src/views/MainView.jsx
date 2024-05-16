@@ -10,45 +10,17 @@ function MainView ({data}) {
 
         <div className="stock-models">
 
-        <Link href = {"/specificModel/" + data[0]?.model}>
+        <Link href = {"/vseries"}>
             <div className="model-specs">
-                <h2>{data[0]?.model}</h2>
+                <h2>V_Series</h2>
                 <img src={data[0]?.image_url} alt="image of e_bike" />
             </div>
         </Link>
 
-        <Link href = {"/specificModel/" + data[4]?.model}>
+        <Link href = {"/rseries"}>
             <div className="model-specs">
-                <h2>{data[4]?.model}</h2>
-                <img src={data[4]?.image_url} alt="image of e_bike" />
-            </div>
-        </Link>
-
-        <Link href = {"/specificModel/" + data[8]?.model}>
-            <div className="model-specs">
-                <h2>{data[8]?.model}</h2>
-                <img src={data[8]?.image_url} alt="image of e_bike" />
-            </div>
-        </Link>
-
-        <Link href = {"/specificModel/" + data[14]?.model}>
-            <div className="model-specs">
-                <h2>{data[14]?.model}</h2>
+                <h2>R_Series</h2>
                 <img src={data[14]?.image_url} alt="image of e_bike" />
-            </div>
-        </Link>
-
-        <Link href = {"/specificModel/" + data[10]?.model}>
-            <div className="model-specs">
-                <h2>{data[10]?.model}</h2>
-                <img src={data[10]?.image_url} alt="image of e_bike" />
-            </div>
-        </Link>
-
-        <Link href = {"/specificModel/" + data[18]?.model}>
-            <div className="model-specs">
-                <h2>{data[18]?.model}</h2>
-                <img src={data[18]?.image_url} alt="image of e_bike" />
             </div>
         </Link>
 
