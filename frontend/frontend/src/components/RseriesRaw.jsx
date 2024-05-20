@@ -76,13 +76,15 @@ async function HandleSubmit(event) {
 
     event.preventDefault();
 
-    CartService.setCart([{
+    let selectedBike = {
         model: data[0]?.model,
         motor: motor,
         price: price,
         color: color,
         range: range
-    }])
+    };
+
+    CartService.setCart(selectedBike)
 
 
     alert("Item Added to Cart!");

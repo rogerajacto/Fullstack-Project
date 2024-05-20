@@ -1,5 +1,21 @@
 const connection = require("../db/connection");
 
+
+async function getAllUsers() {
+    const sql = "SELECT email FROM  users";
+
+    try {
+        const [result] = await connection.promise().query(sql);
+
+        return result;
+        
+    } catch (error) {
+        console.log(error);
+
+        throw new Error ("Database failure")
+    }
+}
+
 async function addUser(email,hash) {
 
     try {
@@ -29,7 +45,32 @@ async function selectUser(email) {
     }
 }
 
+
+async function changePassword (hash,email) {
+
+    const sql = "UPDATE users  SET hashed_password = ? WHERE email = ?";
+
+    try {
+
+        const result =  await connection.promise().query(sql,[hash, email]);
+
+        console.log(result)
+
+        return result;
+        
+        
+        
+    } catch (error) {
+        console.log(error);
+
+        throw new Error ("Database failure")
+    }
+}
+
+
 module.exports = {
     addUser,
-    selectUser
+    selectUser,
+    changePassword,
+    getAllUsers
 }

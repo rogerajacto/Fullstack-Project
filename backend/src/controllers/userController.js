@@ -3,6 +3,23 @@ const hashedPassword = require ("../services/encryptionService");
 const validator = require ('validator');
 const jwtService = require ("../services/jwtService")
 
+async function getAllUsers(req,res) {
+
+    try {
+        const users = await usersDB.getAllUsers();
+
+        if (users) {
+            res.json(users);
+        }
+        else{
+            res.status(404).send("Item not found");
+        }
+     
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+}
+
 async function addUser(req, res) {
     try {
         const {email, password} = req.body;
@@ -65,7 +82,6 @@ async function loginUser(req, res) {
 
     
     console.log(user);
-    // console.log(email)
 
     if (!user) {
         res.status(400).json({
@@ -95,7 +111,47 @@ async function loginUser(req, res) {
 
 }
 
+async function changePassword(req,res) {
+
+    const { email, password } = req.body;
+
+    const hash = await hashedPassword.createHash(password);
+
+    const user = await usersDB.selectUser(email);
+
+    if (!user) {
+        res.status(400).json({
+            status: "error",
+            message: "User not found"
+        })
+        return;
+    }
+
+
+    try {
+
+        const result = await usersDB.changePassword(hash, email);
+
+        if (result) {
+            res.status(400).json({
+                status: "success",
+                message: "Password Changed"
+            })
+        }
+        else{
+            res.status(404).send("Something went wrong");
+        }
+        
+    } catch (error) {
+
+        res.status(500).send(error.message);
+    }
+
+}
+
 module.exports ={
+    getAllUsers,
     addUser,
-    loginUser
+    loginUser,
+    changePassword
 }

@@ -22,7 +22,7 @@ function RseriesLarge({allStock}) {
 
 
     
-const [value,setValue] = useState(allStock[14]?.image_url);
+const [value,setValue] = useState(allStock[10]?.image_url);
 const [motor, setMotor] = useState("250");
 const [color, setColor] = useState("Black Matte");
 let price = "";
@@ -74,13 +74,15 @@ async function HandleSubmit(event) {
 
     event.preventDefault();
 
-    CartService.setCart([{
+    let selectedBike = {
         model: data[0]?.model,
         motor: motor,
         price: price,
         color: color,
         range: range
-    }])
+    };
+
+    CartService.setCart(selectedBike)
 
 
     alert("Item Added to Cart!");

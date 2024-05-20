@@ -3,8 +3,16 @@ function getCart() {
     return JSON.parse(localStorage.getItem("cart"))
 }
 
+
+let items = [];
+
 function setCart(cart) {
-    localStorage.setItem("cart", JSON.stringify(cart));
+
+items.push(cart)
+
+localStorage.setItem("cart", JSON.stringify(items));
+
+    
 }
 
 export default {

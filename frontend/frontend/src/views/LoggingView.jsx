@@ -32,14 +32,16 @@ async function HandleSubmit(event) {
         localStorage.setItem('token', result.token);
 
         if (response.ok) {
-            alert('Login successful');
+            alert('Login successful');       
+            navigateToPage();
+
         } else {
             console.error('Login failed:', result.message);
+            alert(result.message)
         }
     } catch (error) {
         console.error('Error:', error);
     }
-    navigateToPage();
 }
 
     return(
