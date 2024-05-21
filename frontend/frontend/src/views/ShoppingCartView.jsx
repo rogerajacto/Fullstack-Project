@@ -1,11 +1,24 @@
 
 import CartService from "../services/CartService";
+import { useState } from "react";
 
 function ShoppingCart() {
 
+    const [cartInfo, setCartInfo] = useState(CartService.getCart());
+    const [accessoriesCartInfo, setAccessoriesCartInfo] = useState(CartService.getAccessoriesCart());
 
-    const cartInfo = CartService.getCart()
-    console.log(cartInfo)
+    function handleDelete(model) {
+        const updatedCart = cartInfo.filter(item => item.model !== model);
+        setCartInfo(updatedCart);
+
+
+        CartService.updateCart(updatedCart);
+    }
+
+
+    console.log(cartInfo);
+
+    
 
     function cartData() {
 
@@ -13,7 +26,7 @@ function ShoppingCart() {
             return(
                 <>
                     <div className="shopping-cart-display">
-
+                    <h3>E-bikes:</h3>
                         <table>
                             <thead>
                                 <th>Product</th>
@@ -33,7 +46,13 @@ function ShoppingCart() {
                                             <td>{info.motor} Watts</td>
                                             <td>{info.range} Km</td>
                                             <td>{info.price} €</td>
-                                            <td className="del-td"><button className="del-button"><i class="fa-solid fa-trash-can"></i></button></td>
+                                            <button
+                                                    value={info.model}
+                                                    className="del-button"
+                                                    onClick={() => handleDelete(info.model)}
+                                                >
+                                                    <i className="fa-solid fa-trash-can"></i>
+                                                </button>
                                         </tr>
                                         </>)
                                 })
@@ -46,10 +65,57 @@ function ShoppingCart() {
 
             return(
                 <>
-                    <h1>Your Shopping Cart is Empty!</h1>
+                    <h2 className="alternative" >You don't have any e-bike on your cart right now 😪</h2>
                 </>
             )
         }
+    }
+
+
+    function accessoriesCartData() {
+
+        if (accessoriesCartInfo[0].product != undefined) {
+            return(
+                <>
+        <div className="shopping-cart-display">
+            <h3>Accessories:</h3>
+            <table>
+                <thead>
+                    <th>Product</th>
+                    <th>Price</th>
+                </thead>
+                <tbody>
+                {
+                    accessoriesCartInfo.map(function (info) {
+                        return(
+                            <>
+                            <tr>
+                                <td>{info.product} </td>
+                                <td>{info.price} €</td>
+                                <button
+                                        value={info.model}
+                                        className="del-button"
+                                        onClick={() => handleDelete(info.model)}
+                                    >
+                                        <i className="fa-solid fa-trash-can"></i>
+                                    </button>
+                            </tr>
+                            </>)
+                    })
+                }
+                </tbody>
+            </table>
+            </div>
+                        </>)}
+        else{
+
+            return(
+                <>
+                    <h2 className="alternative">You don't have any accessories on your cart right now 😪</h2>
+                </>
+            )
+        }
+        
     }
 
     function showTotal() {
@@ -60,7 +126,9 @@ function ShoppingCart() {
     return(
         <>
         <h1>Your Cart!</h1>
+        
         {cartData()}
+        {accessoriesCartData()}
         
         </>
     )

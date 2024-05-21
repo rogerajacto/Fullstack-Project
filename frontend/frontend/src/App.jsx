@@ -7,6 +7,7 @@ import Register from "./views/RegisterView";
 import LoggingIn from "./views/LoggingView";
 import ShoppingCart from "./views/ShoppingCartView";
 import Vseries from "./views/VseriesView";
+import AccessoriesView from "./views/AccessoriesView";
 
 import { Route, Switch } from "wouter";
 import { useState } from "react";
@@ -77,6 +78,12 @@ function getImgsVseries(params) {
         <Route path = "/customize">
 
           <Customize/>
+
+        </Route>
+        
+        <Route path = "/accessories">
+
+          <AccessoriesView/>
 
         </Route>
 

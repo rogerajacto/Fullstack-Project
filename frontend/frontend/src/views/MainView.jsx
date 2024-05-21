@@ -29,12 +29,21 @@ function MainView ({data}) {
         </div>
         <hr/>
 
-        <Link href="/customize">
-            <div className="customization">
-                <h2>Customize Your Own E-bike!</h2>
-                <p><i className="fa-solid fa-screwdriver-wrench"></i></p>
-            </div>
-        </Link>
+        <div className="extras-container">
+            <Link href="/customize">
+                <div className="customization">
+                    <h2>Customize Your Own E-bike!</h2>
+                    <p><i className="fa-solid fa-screwdriver-wrench"></i></p>
+                </div>
+            </Link>
+            
+            <Link href="/accessories">
+                <div className="customization">
+                    <h2>Accessories</h2>
+                    <p><i class="fa-solid fa-plus"></i></p>
+                </div>
+            </Link>
+        </div>
 
 
         </>

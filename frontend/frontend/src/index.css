@@ -122,7 +122,7 @@ hr{
   margin-bottom: 50px;
 }
 
-.customization .fa-screwdriver-wrench{
+.customization i{
   color: #444;
   font-size: 6rem;
   text-align: center;
@@ -134,6 +134,13 @@ hr{
 
 .customization{
   margin-bottom: 50px;
+}
+
+.extras-container{
+  display: flex;
+  justify-content: center;
+  gap: 15%;
+
 }
 
 
@@ -194,6 +201,34 @@ text-decoration: none;
   text-align: center;
   font-size: 2.6rem;
 }
+
+
+/* ACCESSORIES */
+.accessories-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: center;
+  gap: 30px;
+  padding: 20px;
+}
+
+.accessorie img{
+width: 300px;
+}
+
+.accessorie p{
+  font-family: 'Playfair Display SC', serif;
+  color: #444;
+  inline-size: 300px;
+  text-align: justify;
+}
+
+.accessorie{
+  width: 300px;
+}
+
 
 
 /* CONFIGURATOR */
@@ -272,17 +307,26 @@ padding: 0 20px 0 20px;
   color: #444;
   text-align: justify;
   padding: 30px;
+  padding-top: 0;
 }
 
 .shopping-cart-display th{
 font-size: 1.5rem;
-padding-bottom: 20px;
 
 }
 
 .shopping-cart-display td{
 
   border-bottom: 2px solid rgb(138, 112, 0) ;
+}
+
+.shopping-cart-display h3{
+  text-align: justify;
+  padding-left: 15%;
+}
+
+.alternative{
+  text-align: center;
 }
 
 .del-button{
