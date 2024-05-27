@@ -21,7 +21,6 @@ function AccessoriesView() {
         getData()
     },[])
 
-    // console.log(data)
 
 
     function HandleSubmit(product, price) {
@@ -32,7 +31,9 @@ function AccessoriesView() {
             price: price,
         };
         CartService.setAccessoriesCart(selecteditem)
-        console.log(selecteditem)
+
+        alert("Item Added to Cart!")
+        // console.log(selecteditem)
     }
 
 

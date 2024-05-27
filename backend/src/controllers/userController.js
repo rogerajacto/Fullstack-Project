@@ -81,7 +81,7 @@ async function loginUser(req, res) {
     const user = await usersDB.selectUser(email);
 
     
-    console.log(user);
+    // console.log(user);
 
     if (!user) {
         res.status(400).json({

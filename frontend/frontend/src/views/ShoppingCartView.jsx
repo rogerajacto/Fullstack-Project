@@ -15,8 +15,16 @@ function ShoppingCart() {
         CartService.updateCart(updatedCart);
     }
 
+    function handleAccessoriesDelete(product) {
+        const updatedAccessoriesCart = accessoriesCartInfo.filter(item => item.product !== product);
+        setAccessoriesCartInfo(updatedAccessoriesCart);
 
-    console.log(cartInfo);
+
+        CartService.updateAccessoriesCart(updatedAccessoriesCart);
+    }
+
+
+    // console.log(cartInfo);
 
     
 
@@ -74,7 +82,7 @@ function ShoppingCart() {
 
     function accessoriesCartData() {
 
-        if (accessoriesCartInfo[0].product != undefined) {
+        if (accessoriesCartInfo[0]?.product != undefined) {
             return(
                 <>
         <div className="shopping-cart-display">
@@ -93,9 +101,9 @@ function ShoppingCart() {
                                 <td>{info.product} </td>
                                 <td>{info.price} €</td>
                                 <button
-                                        value={info.model}
+                                        value={info.product}
                                         className="del-button"
-                                        onClick={() => handleDelete(info.model)}
+                                        onClick={() => handleAccessoriesDelete(info.product)}
                                     >
                                         <i className="fa-solid fa-trash-can"></i>
                                     </button>
@@ -118,17 +126,32 @@ function ShoppingCart() {
         
     }
 
-    function showTotal() {
+    function Total() {
 
+        let totalBike = 0;
+        let totalAccessories = 0;
+
+            for (let i = 0; i < cartInfo.length; i++) {
+                
+                totalBike = totalBike +  Number(cartInfo[i]?.price);          
+            }
+
+            for (let i = 0; i < accessoriesCartInfo.length; i++) {
+                
+                totalAccessories = totalAccessories +  Number(accessoriesCartInfo[i]?.price);
+            }
+
+        return totalBike + totalAccessories
+            
     }
-
 
     return(
         <>
-        <h1>Your Cart!</h1>
-        
-        {cartData()}
-        {accessoriesCartData()}
+            <h1>Your Cart!</h1>
+            
+            {cartData()}
+            {accessoriesCartData()}
+            <h1>Your Total: {Total()} €</h1>
         
         </>
     )

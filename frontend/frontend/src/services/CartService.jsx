@@ -4,20 +4,18 @@ function getCart() {
 }
 
 
-let items = [];
+let items = JSON.parse(localStorage.getItem("cart"));
 
 function setCart(cart) {
 
-items.push(cart)
+items.push(cart);
 
-localStorage.setItem("cart", JSON.stringify(items));
-
-    
+localStorage.setItem("cart", JSON.stringify(items)); 
 }
 
 function updateCart(cart) {
 localStorage.setItem("cart", JSON.stringify(cart));
-items = cart
+items = cart;
 }
 
 
@@ -26,7 +24,7 @@ function getAccessoriesCart() {
 }
 
 
-let accessoriesitems = [];
+let accessoriesitems = JSON.parse(localStorage.getItem("accessoriesCart"));
 
 function setAccessoriesCart(cart) {
 
@@ -39,7 +37,7 @@ localStorage.setItem("accessoriesCart", JSON.stringify(accessoriesitems));
 
 function updateAccessoriesCart(cart) {
 localStorage.setItem("accessoriesCart", JSON.stringify(cart));
-items = cart
+accessoriesitems = cart
 }
 
 
