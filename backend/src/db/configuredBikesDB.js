@@ -51,7 +51,7 @@ async function addConfiguredBike(frame, color, motor, seat, lights, mudguard) {
     }
 }
 
-async function editConfiguredBike(frame, color, seat, lights, mudguard, motor,id) {
+async function editConfiguredBike(frame, color, seat, lights, mudguard, motor, id) {
 
     const sql = "UPDATE configured_bikes  SET frame = ?, color = ?, seat = ?, lights = ?, mudguard = ?, motor = ? WHERE id = ?";
     const params = [frame, color, seat, lights, mudguard, motor, id]
@@ -59,7 +59,7 @@ async function editConfiguredBike(frame, color, seat, lights, mudguard, motor,id
     try {
         const [result] = await connection.promise().query(sql, params);
 
-        console.log(result)
+        // console.log(result)
         return result;
         
         
